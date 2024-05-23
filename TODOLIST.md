@@ -39,9 +39,9 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 ### Gestão de Agentes
 
 - [x] Implementar a funcionalidade para criar agentes.
-- [x] Implementar a funcionalidade para editar agentes.
+- [ ] Implementar a funcionalidade para editar agentes.
 - [ ] Implementar a funcionalidade para remover agentes.
-- [x] Implementer a funcionalidade para listar agentes por id.
+- [ ] Implementer a funcionalidade para listar agentes por id.
 - [ ] Implementar a funcionalidade para listar agentes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).
 - [ ] Implementar a funcionalidade para listar agentes por idade ascendente (Algoritmos de ordenação - Semana 4).
 - [ ] Implementar a funcionalidade para colocar um agente como indisponível.

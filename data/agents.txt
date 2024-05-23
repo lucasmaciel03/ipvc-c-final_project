@@ -17,3 +17,13 @@ Password:1234
 Estado:0
 
 ==============================
+==============================
+Username:asdrubal
+Nome:asdrubal
+NIF:123456789
+Morada:rua57
+Contacto:91338473611-11-23
+Data de Nascimento:11-11-23
+Password:1234
+Estado:0
+==============================

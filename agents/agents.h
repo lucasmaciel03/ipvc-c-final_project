@@ -20,5 +20,7 @@ typedef struct {
 } Agent;
 
 void createAgent();
+void editAgent();
+void agentExists(char *username, int *found);
 
 #endif

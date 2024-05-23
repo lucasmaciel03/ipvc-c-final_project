@@ -26,7 +26,7 @@ switch(choice){
             createAgent();
             break;
         case 2:
-            // edit_agent();
+            editAgent();
             break;
         case 3:
             // remove_agent();

@@ -25,11 +25,12 @@ int countAgents(){
     return count;
 }
 //verificar se o agente existe
-int agentExists(char *username){
+void agentExists(char *username, int *found){
     FILE *file = fopen(FILENAME, "r");
     if (file == NULL) {
         printf("Erro: Não foi possível abrir o ficheiro!\n");
-        return 0;
+        *found = 0;
+        return;
     }
 
     char line[100];
@@ -39,12 +40,13 @@ int agentExists(char *username){
 
         if (strcmp(existingUsername, username) == 0) {
             fclose(file);
-            return 1;
+            *found = 1;
+            return;
         }
     }
 
     fclose(file);
-    return 0;
+    *found = 0;
 }
 
 // função para criar agente
@@ -90,7 +92,7 @@ void createAgent(){
         return;
     }
     fprintf(file,"==============================\n");
-    fprintf(file, "Username:%s\nNome:%s\nNIF:%s\nMorada:%s\nContacto:%s\nData de Nascimento:%s\nPassword:%s\nEstado:%d\n\n",
+    fprintf(file, "Username:%s\nNome:%s\nNIF:%s\nMorada:%s\nContacto:%s\nData de Nascimento:%s\nPassword:%s\nEstado:%d\n",
             newAgent.username, newAgent.name, newAgent.nif, newAgent.morada,
             newAgent.contacto, newAgent.dataNascimento, newAgent.password,
             newAgent.status);
@@ -101,3 +103,12 @@ void createAgent(){
 
     printf("Agente %s criado com sucesso!\n", newAgent.name);
 }
+
+
+//função para editar os agentes
+void editAgent(){
+
+}
+
+
+
