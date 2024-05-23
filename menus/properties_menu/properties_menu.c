@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include "../../utils/utils.h"
 #include "../../auth/users/user.h"
+#include "../../properties/properties.h"
 
 void display_properties_menu(const User *user){
     int choice;
 
-    printf("Gestão de Agentes\n");
+    PropertiesList list;
+    initPropertiesList(&list);
+
+    printf("Gestão de Propriedades\n");
     printf("============================================\n");
     printf("1. Criar Propriedades \n");
     printf("2. Editar Propriedades \n");
@@ -16,10 +20,24 @@ void display_properties_menu(const User *user){
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
-
+    clearBuffer();
+    
     switch(choice){
         case 1:
-            //createProperty();
+            
+            do{
+                Property* newProperty = createProperty(&list);
+                if(newProperty){
+                    addProperty(&list, newProperty);
+                    clearBuffer();
+                    printf("Propriedade criada com sucesso!\n");
+                }
+                
+                printf("Deseja criar outra propriedade? (1 - Sim, 0 - Não): ");
+                scanf("%d", &choice);
+                clearBuffer();
+            } while(choice == 1);
+            printProperties(&list);
             break;
         case 2:
             // edit_property();
@@ -28,7 +46,7 @@ void display_properties_menu(const User *user){
             // remove_property();
             break;
         case 4:
-            // list_property();
+            printProperties(&list);
             break;
         case 5:
             display_menu(user);
