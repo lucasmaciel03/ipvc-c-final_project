@@ -55,6 +55,12 @@ void createAgent(){
 
     printf("Insira o username do agente: ");
     scanf("%s", newAgent.username);
+    int found;
+    agentExists(newAgent.username, &found);
+    if(found){
+        printf("Erro: O username já existe!\n");
+        return;
+    }
     printf("Insira a password do agente: ");
     scanf("%s", newAgent.password);
     printf("Insira o nome do agente: ");
@@ -81,17 +87,11 @@ void createAgent(){
         return;
     }
 
-    if(agentExists(newAgent.username)){
-        printf("Erro: O username já existe!\n");
-        return;
-    }
-
     FILE *file = fopen(FILENAME, "a");
     if (file == NULL) {
         printf("Erro: Não foi possível abrir o ficheiro!\n");
         return;
     }
-    fprintf(file,"==============================\n");
     fprintf(file, "Username:%s\nNome:%s\nNIF:%s\nMorada:%s\nContacto:%s\nData de Nascimento:%s\nPassword:%s\nEstado:%d\n",
             newAgent.username, newAgent.name, newAgent.nif, newAgent.morada,
             newAgent.contacto, newAgent.dataNascimento, newAgent.password,
@@ -107,7 +107,70 @@ void createAgent(){
 
 //função para editar os agentes
 void editAgent(){
+    char username[20];
+    printf("Insira o username do agente que deseja editar: ");
+    scanf("%19s", username);
 
+    int found;
+    agentExists(username, &found);
+
+    if(!found){
+        printf("Erro: O agente não existe!\n");
+        return;
+    }
+
+    Agent updatedAgent;
+
+    printf("Insira o novo username do agente:");
+    scanf("%19s", updatedAgent.username);
+    printf("Insira a nova password do agente:");
+    scanf("%19s", updatedAgent.password);
+    printf("Insira o novo nome do agente:");
+    scanf("%19s", updatedAgent.name);
+    printf("Insira o novo NIF do agente:");
+    scanf("%9s", updatedAgent.nif);
+    printf("Insira a nova morada do agente:");
+    scanf("%49s", updatedAgent.morada);
+    printf("Insira o novo contacto do agente:");
+    scanf("%9s", updatedAgent.contacto);
+    printf("Insira a nova data de nascimento do agente (dd-mm-yyyy):");
+    scanf("%9s", updatedAgent.dataNascimento);
+    printf("Insira o estado do agente (0 - Disponível, 1 - Indisponível):");
+    scanf("%d", &updatedAgent.status);
+
+    FILE *file = fopen(FILENAME, "r");
+    if(file == NULL){
+        printf("Erro: Não foi possível abrir o ficheiro!\n");
+        return;
+    }
+
+    FILE *tempFile = fopen("../data/temp.txt", "w");
+    if(tempFile == NULL){
+        printf("Erro: Não foi possível abrir o ficheiro!\n");
+        return;
+    }
+
+    char line[100];
+    while(fgets(line, sizeof(line), file)){
+        char existingUsername[20];
+        sscanf(line, "%19[^;]:", existingUsername);
+
+        if(strcmp(existingUsername, username) == 0){
+            fprintf(tempFile, "Username:%s\nNome:%s\nNIF:%s\nMorada:%s\nContacto:%s\nData de Nascimento:%s\nPassword:%s\nEstado:%d\n",
+                    updatedAgent.username, updatedAgent.name, updatedAgent.nif, updatedAgent.morada,
+                    updatedAgent.contacto, updatedAgent.dataNascimento, updatedAgent.password,
+                    updatedAgent.status);
+        }else{
+            fprintf(tempFile, "%s", line);
+        }
+    }
+
+    fclose(file);
+    fclose(tempFile);
+    remove(FILENAME);
+    rename("../data/temp.txt", FILENAME);
+
+    printf("Agente %s editado com sucesso!\n", updatedAgent.name);
 }
 
 
