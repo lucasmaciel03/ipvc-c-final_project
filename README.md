@@ -2,7 +2,7 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a >
     <img src="https://scontent.fopo5-1.fna.fbcdn.net/v/t39.30808-6/359699729_684932720342698_727415315470824768_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=gw8EKkTn9JkQ7kNvgG3FK1H&_nc_ht=scontent.fopo5-1.fna&oh=00_AYCpfpPeAThlOIIjJMyIgivJ0nxoyxR4PfAXdLcwS5jJ9g&oe=66552ADB" alt="Logo" width="200" height="200" style="border-radius: 20%">
   </a>
 
@@ -45,7 +45,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
-## Contact
+## Contribuidores
 
 Lucas Maciel - [Linkedin][linkedin-url]
 
