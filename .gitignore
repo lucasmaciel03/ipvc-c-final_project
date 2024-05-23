@@ -1,0 +1,67 @@
+# CLion specific and JetBrains IDE
+.idea/
+*.iml
+
+# CMake files
+cmake-build*/
+
+# Build output
+*.o
+*.a
+*.so
+*.exe
+*.dll
+*.out
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+*.so
+*.dylib
+*.bc
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Log files
+*.log
+
+# macOS specific
+.DS_Store
+
+# Dependencies
+deps/
+vendor/
+
+# Misc
+*.swp
+*~
+.*~
+# VS Code
+.vscode/
+
+# Optional: include CMake script files if you build from scratch,
+# otherwise comment this out
+# CMakeLists.txt
+# *.cmake
+exec_project
