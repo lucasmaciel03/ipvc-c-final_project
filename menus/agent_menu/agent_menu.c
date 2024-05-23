@@ -11,7 +11,7 @@ void display_agent_menu(const User *user){
     printf("1. Criar novo Agente \n");
     printf("2. Editar Agente \n");
     printf("3. Remover Agente \n");
-    printf("4. Listar Agente por ID \n");
+    printf("4. Listar Agente por username \n");
     printf("5. Listar Agentes por ordem alfabética do nome \n");
     printf("6. Listar Agentes por idade ascendente \n");
     printf("7. Colocar Agente como Indisponível \n");
@@ -29,10 +29,10 @@ switch(choice){
             editAgent();
             break;
         case 3:
-            // remove_agent();
+            deleteAgent();
             break;
         case 4:
-            // list_agent_by_id();
+            selectAgent();
             break;
         case 5:
             // list_agent_by_name();

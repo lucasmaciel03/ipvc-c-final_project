@@ -35,14 +35,14 @@ void agentExists(char *username, int *found){
 
     char line[100];
     while (fgets(line, sizeof(line), file)) {
-        char existingUsername[20];
-        sscanf(line, "%19[^;]:", existingUsername);
+            char existingUsername[20];
+            sscanf(line, "%19[^;]:", existingUsername);
 
-        if (strcmp(existingUsername, username) == 0) {
-            fclose(file);
-            *found = 1;
-            return;
-        }
+            if (strcmp(existingUsername, username) == 0) {
+                fclose(file);
+                *found = 1;
+                return;
+            }
     }
 
     fclose(file);
@@ -109,7 +109,7 @@ void createAgent(){
 void editAgent(){
     char username[20];
     printf("Insira o username do agente que deseja editar: ");
-    scanf("%19s", username);
+    scanf("%s", username);
 
     int found;
     agentExists(username, &found);
@@ -171,6 +171,92 @@ void editAgent(){
     rename("../data/temp.txt", FILENAME);
 
     printf("Agente %s editado com sucesso!\n", updatedAgent.name);
+}
+
+void selectAgent(){
+    char username[20];
+    printf("Insira o username do agente que deseja visualizar: ");
+    scanf("%s", username);
+
+    int found;
+    agentExists(username, &found);
+
+    if(!found){
+        printf("Erro: O agente não existe!\n");
+        return;
+    }
+
+    FILE *file = fopen(FILENAME, "r");
+    if(file == NULL){
+        printf("Erro: Não foi possível abrir o ficheiro!\n");
+        return;
+    }
+
+    Agent agent;
+    char line[100];
+    while(fgets(line, sizeof(line), file)){
+        char existingUsername[20];
+        sscanf(line, "Username:%19[^;];", existingUsername);
+
+        if(strcmp(existingUsername, username) == 0){
+            sscanf(line, "Username:%19[^;];\nNome:%19[^;];\nNIF:%9[^;];\nMorada:%49[^;];\nContacto:%9[^;];\nData de Nascimento:%9[^;];\nPassword:%19[^;];\nEstado:%d\n",
+                    agent.username, agent.name, agent.nif, agent.morada, agent.contacto, agent.dataNascimento, agent.password, &agent.status);
+            break;
+        }
+    }
+
+    fclose(file);
+
+    printf("Username: %s\n", agent.username);
+    printf("Nome: %s\n", agent.name);
+    printf("NIF: %s\n", agent.nif);
+    printf("Morada: %s\n", agent.morada);
+    printf("Contacto: %s\n", agent.contacto);
+    printf("Data de Nascimento: %s\n", agent.dataNascimento);
+    printf("Estado: %s\n", agent.status == DISPONIVEL ? "Disponível" : "Indisponível");
+}
+
+void deleteAgent(){
+    char username[20];
+    printf("Insira o username do agente que deseja remover: ");
+    scanf("%s", username);
+
+    int found;
+    agentExists(username, &found);
+
+    if(!found){
+        printf("Erro: O agente não existe!\n");
+        return;
+    }
+
+    FILE *file = fopen(FILENAME, "r");
+    if(file == NULL){
+        printf("Erro: Não foi possível abrir o ficheiro!\n");
+        return;
+    }
+
+    FILE *tempFile = fopen("../data/temp.txt", "w");
+    if(tempFile == NULL){
+        printf("Erro: Não foi possível abrir o ficheiro!\n");
+        return;
+    }
+
+    char line[100];
+    while(fgets(line, sizeof(line), file)){
+        char existingUsername[20];
+        sscanf(line, "%19[^;]:", existingUsername);
+
+        if(strcmp(existingUsername, username) != 0){
+            fprintf(tempFile, "%s", line);
+        }
+    }
+
+    fclose(file);
+    fclose(tempFile);
+    remove(FILENAME);
+    rename("../data/temp.txt", FILENAME);
+
+    printf("Agente %s removido com sucesso!\n", username);
 }
 
 
