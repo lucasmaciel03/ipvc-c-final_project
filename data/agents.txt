@@ -1,0 +1,19 @@
+Username:teste4000
+ Nome:teste4000
+ NIF:123456789
+ Morada:ruadecima
+ Contacto:93385918311-11-23
+ Data de Nascimento:11-11-23
+ Password:1234
+ Estado:1
+==============================
+Username:tiago22
+Nome:tiagomartins
+NIF:123456789
+Morada:ruadebaixo
+Contacto:91919191211-11-23
+Data de Nascimento:11-11-23
+Password:1234
+Estado:0
+
+==============================
