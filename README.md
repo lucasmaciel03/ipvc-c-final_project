@@ -54,7 +54,7 @@ André Maia - [Linkedin][linkedin-url2]
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/lucasmaciel99/pockify.svg?style=for-the-badge
-[contributors-url]: https://github.com/lucasmaciel03/technical-pockify/graphs/contributors
+[contributors-url]: https://github.com/lucasmaciel03/ipvc-c-final_project/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/lucasmaciel99/pockify.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-url]: https://www.linkedin.com/in/-lucasmaciel/
