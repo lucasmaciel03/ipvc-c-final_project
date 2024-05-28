@@ -35,7 +35,7 @@ void display_properties_menu(const User *user){
                 
                 printf("Deseja criar outra propriedade? (1 - Sim, 0 - Não): ");
                 scanf("%d", &choice);
-                clearBuffer();
+                clearBuffer(); 
             } while(choice == 1);
             printProperties(&list);
             break;
