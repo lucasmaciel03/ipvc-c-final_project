@@ -163,6 +163,7 @@ void createAgent(){
 
 //função para carregar os agentes e os dados dos agentes do ficheiro
 void loadAgents(){
+    User user;
     FILE *file = fopen(FILENAME, "r");
     if(file == NULL){
         printf("Erro ao abrir ficheiro\n");
@@ -185,6 +186,7 @@ void loadAgents(){
         numAgents++;
     }
     fclose(file);
+    display_agent_menu(&user);
 }
 
 void editField(char *field, const char *message, size_t size) {
@@ -205,6 +207,7 @@ void editField(char *field, const char *message, size_t size) {
 
 //ver o que se passa porque não edita na totalidade
 void editAgent() {
+    User user;
     while (getchar() != '\n');
     char username[20];
     do {
@@ -261,7 +264,7 @@ void editAgent() {
         editField(agents[i].idade, "Nova idade do Agente", sizeof(agents[i].idade));
     } while (strlen(agents[i].idade) == 0 || agents[i].idade[0] == ' ');
 
-    editField(agents[i].status == DISPONIVEL ? "Disponível" : "Indisponível", "Status do Agente", sizeof(agents[i].status));
+
 
     // Atualizar o arquivo com as informações editadas
     FILE *file = fopen(FILENAME, "w");
@@ -277,10 +280,12 @@ void editAgent() {
     }
     fclose(file);
     printf("Agente %s editado com sucesso\n", username);
+    display_agent_menu(&user);
 }
 
 //função para listar o agente pelo nome pedido pelo utilizador - funciona
 void list_agent_by_name(){
+    User user;
     char name[20];
     do{
         printf("Nome do agente a procurar:");
@@ -310,9 +315,11 @@ void list_agent_by_name(){
             printf("Status: %s\n", agents[i].status == DISPONIVEL ? "Disponível" : "Indisponível");
         }
     }
+    display_agent_menu(&user);
 }
 
 void list_agent_by_age(){
+    User user;
     loadAgents();
     for(int i = 0; i < numAgents; i++){
         for(int j = i + 1; j < numAgents; j++){
@@ -334,9 +341,11 @@ void list_agent_by_age(){
         printf("Idade: %s\n", agents[i].idade);
         printf("Status: %s\n", agents[i].status == DISPONIVEL ? "Disponível" : "Indisponível");
     }
+    display_agent_menu(&user);
 }
 
 void set_agent_unavailable(){
+    User user;
     char username[20];
     do{
         printf("Username do agente a colocar como indisponível:");
@@ -381,9 +390,11 @@ void set_agent_unavailable(){
     }
     fclose(file);
     printf("Agente %s colocado como indisponível\n", username);
+    display_agent_menu(&user);
 }
 
 void deleteAgent(){
+    User user;
     while(getchar() != '\n');
     char username[20];
     do{
@@ -432,6 +443,7 @@ void deleteAgent(){
     }
     fclose(file);
     printf("Agente %s removido com sucesso\n", username);
+    display_agent_menu(&user);
 }
 
 
