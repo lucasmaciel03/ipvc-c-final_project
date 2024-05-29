@@ -3,8 +3,8 @@
 #include "agents.h"
 #include "../utils/utils.h"
 #include <stdlib.h>
-#include "../menus/agent_menu/agent_menu.h"
 #include "../auth/users/user.h"
+#include "../menus/agent_menu/agent_menu.h"
 
 #define FILENAME "../data/agents.txt"
 
@@ -34,6 +34,7 @@ void addAgent(const Agent newAgent){
 void createAgent(){
     Agent newAgent;
     User user;
+    
     while (getchar() != '\n');
     printf("Username:");
     fgets(newAgent.username, sizeof(newAgent.username), stdin);
@@ -157,7 +158,7 @@ void createAgent(){
     }
     fclose(file);
     printf("Agente %s criado com sucesso\n", newAgent.username);
-    display_agent_menu(user);
+    display_agent_menu(&user);
 }
 
 //função para carregar os agentes e os dados dos agentes do ficheiro
