@@ -16,13 +16,15 @@ typedef struct {
     char contacto[9];
     char dataNascimento[10];
     char password[20];
+    char idade[3];
     AgentStatus status;
 } Agent;
 
 void createAgent();
+void loadAgents();
 void editAgent();
-void agentExists(char *username, int *found);
-void selectAgent();
+void list_agent_by_name();
+void list_agent_by_age();
+void set_agent_unavailable();
 void deleteAgent();
-
 #endif

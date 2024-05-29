@@ -11,42 +11,46 @@ void display_agent_menu(const User *user){
     printf("1. Criar novo Agente \n");
     printf("2. Editar Agente \n");
     printf("3. Remover Agente \n");
-    printf("4. Listar Agente por username \n");
-    printf("5. Listar Agentes por ordem alfabética do nome \n");
-    printf("6. Listar Agentes por idade ascendente \n");
-    printf("7. Colocar Agente como Indisponível \n");
-    printf("8. Voltar\n");
-    printf("9. Sair\n");
+    printf("4. Listar Agentes \n");
+    printf("5. Listar Agente por username \n");
+    printf("6. Listar Agentes por ordem alfabética do nome \n");
+    printf("7. Listar Agentes por idade ascendente \n");
+    printf("8. Colocar Agente como Indisponível \n");
+    printf("9. Voltar\n");
+    printf("0. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
     
 switch(choice){
         case 1:
-            createAgent();
+            createAgent(); //funciona
             break;
         case 2:
-            editAgent();
+            editAgent(); //ainda não funciona
             break;
         case 3:
-            deleteAgent();
+            deleteAgent(); //funciona
             break;
         case 4:
-            selectAgent();
+            loadAgents(); //funciona
             break;
         case 5:
-            // list_agent_by_name();
+            list_agent_by_name(); //funciona
             break;
         case 6:
-            // list_agent_by_age();
+            list_agent_by_name(); //funciona
             break;
         case 7:
-            // set_agent_unavailable();
+            list_agent_by_age(); //funciona
             break;
         case 8:
-            display_menu(user);
+            set_agent_unavailable(); //funciona
             break;
         case 9:
+            display_menu(user);
+            break;
+        case 0:
             exit_system();
             break;
         default:
