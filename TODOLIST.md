@@ -30,10 +30,10 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 
 ### Gestão de Propriedades
 
-- [ ] Implementar a funcionalidade para criar tipos de propriedades.
+- [X] Implementar a funcionalidade para criar tipos de propriedades.
 - [ ] Implementar a funcionalidade para editar tipos de propriedades.
 - [ ] Implementar a funcionalidade para remover tipos de propriedades.
-- [ ] Implementar a funcionalidade para listar tipos de propriedades e seus preços.
+- [X] Implementar a funcionalidade para listar tipos de propriedades e seus preços.
     - Usar listas duplamente ligadas para gestão eficiente da lista de propriedades (Semana 9).
 
 ### Gestão de Agentes
