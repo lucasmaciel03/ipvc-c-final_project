@@ -1,6 +1,8 @@
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
 
+#include "../auth/users/user.h"
+
 typedef struct Property {
     int id;
     char morada[50];
@@ -20,8 +22,9 @@ typedef struct {
 } PropertiesList;
 
 void initPropertiesList(PropertiesList* list);
-Property* createProperty(PropertiesList* list);
+Property* createProperty(PropertiesList* list, const User* user);
 void addProperty(PropertiesList* list, Property* newProperty);
-void printProperties(const PropertiesList* list);
-
+void printProperties(const User *user);
+void display_all_users_data(const User *user);
+void removeProperty(PropertiesList* list, const User* user);
 #endif
