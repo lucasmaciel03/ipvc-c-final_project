@@ -19,4 +19,9 @@ add_executable(ipvc_c_final_project main.c
         auth/users/user.c
         agents/agents.c
         properties/properties.c
-        properties/properties.h)
+        properties/properties.h
+        menus/database_menu/database_menu.c
+        data_base/data_base.h
+        data_base/data_base.c
+        clients/clients.c
+        clients/clients.h)
