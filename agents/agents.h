@@ -27,4 +27,5 @@ void list_agent_by_name();
 void list_agent_by_age();
 void set_agent_unavailable();
 void deleteAgent();
+int checkAgentUsername(const char* username);
 #endif

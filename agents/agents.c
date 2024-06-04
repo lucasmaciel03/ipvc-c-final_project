@@ -6,7 +6,8 @@
 #include "../auth/users/user.h"
 #include "../menus/agent_menu/agent_menu.h"
 
-#define FILENAME "../data/agents.txt"
+#define FILENAME_TXT "../data/agents.txt"
+#define FILENAME_DAT "../data/users.dat"
 
 Agent agents[MAX_AGENTS];
 int numAgents = 0;
@@ -20,6 +21,19 @@ int agentExists(char* username){
     }
     return 0;
 }
+
+
+int checkAgentUsername(const char* username){
+    for(int i = 0; i < numAgents; i++){
+        if(strcmp(agents[i].username, username) == 0 && agents[i].status == DISPONIVEL){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void addAgentInDatFile(const Agent newAgent);
+
 
 //função para adicionar um agente
 void addAgent(const Agent newAgent){
@@ -145,7 +159,7 @@ void createAgent(){
 
     addAgent(newAgent);
 
-    FILE *file = fopen(FILENAME, "w");
+    FILE *file = fopen(FILENAME_TXT, "a");
     if(file == NULL){
         printf("Erro ao abrir ficheiro\n");
         return;
@@ -157,14 +171,48 @@ void createAgent(){
                 agents[i].password, agents[i].idade, agents[i].status);
     }
     fclose(file);
+    
+    addAgentInDatFile(newAgent);
+    
     printf("Agente %s criado com sucesso\n", newAgent.username);
     display_agent_menu(&user);
+}
+
+void addAgentInDatFile(const Agent newAgent){
+    FILE *file = fopen(FILENAME_DAT, "ab");
+    if(file == NULL){
+        printf("Erro ao abrir ficheiro\n");
+        return;
+    }
+    
+    // info received
+    printf("Username Received: %s\n", newAgent.username);
+    printf("Password Received: %s\n", newAgent.password);
+    
+    // in file .dat you just save username, password and role (1) 
+    
+    User newUser;
+    strncpy(newUser.username, newAgent.username, sizeof(newUser.username) -1);
+    newUser.username[sizeof(newUser.username) - 1] = '\0'; // Ensure null-terminated string
+    strncpy(newUser.password, newAgent.password, sizeof(newUser.password) -1);
+    newUser.password[sizeof(newUser.password) - 1] = '\0'; // Ensure null-terminated string
+    newUser.role = AGENT;
+
+    // print info saved
+    printf("Username Saved: %s\n", newUser.username);
+    printf("Password Saved: %s\n", newUser.username);
+    
+    fwrite(&newUser, sizeof(User), 1, file);
+    
+
+    
+    fclose(file);
 }
 
 //função para carregar os agentes e os dados dos agentes do ficheiro
 void loadAgents(){
     User user;
-    FILE *file = fopen(FILENAME, "r");
+    FILE *file = fopen(FILENAME_TXT, "r");
     if(file == NULL){
         printf("Erro ao abrir ficheiro\n");
         return;
@@ -267,7 +315,7 @@ void editAgent() {
 
 
     // Atualizar o arquivo com as informações editadas
-    FILE *file = fopen(FILENAME, "w");
+    FILE *file = fopen(FILENAME_TXT, "w");
     if (file == NULL) {
         printf("Erro ao abrir ficheiro\n");
         return;
@@ -377,7 +425,7 @@ void set_agent_unavailable(){
 
     agents[i].status = INDISPONIVEL;
 
-    FILE *file = fopen(FILENAME, "w");
+    FILE *file = fopen(FILENAME_TXT, "w");
     if(file == NULL){
         printf("Erro ao abrir ficheiro\n");
         return;
@@ -430,7 +478,7 @@ void deleteAgent(){
     }
     numAgents--;
 
-    FILE *file = fopen(FILENAME, "w");
+    FILE *file = fopen(FILENAME_TXT, "w");
     if(file == NULL){
         printf("Erro ao abrir ficheiro\n");
         return;
