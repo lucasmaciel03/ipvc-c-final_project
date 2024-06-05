@@ -29,6 +29,31 @@ int calculateNextId() {
     return id + 1;
 }
 
+// function to use in removeProperty and editProperty to check if the ID of the property exists
+// - read the file and check if the ID exists
+// - return 1 if the ID exists and 0 if not
+
+int checkPropertyId(int id) {
+    FILE* file = fopen(FILENAME, "r");
+    if (file == NULL) {
+        return 0;
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), file)) {
+        char* token = strtok(line, ";");
+        int currentId = atoi(token);
+        if (currentId == id) {
+            fclose(file);
+            return 1;
+        }
+    }
+
+    fclose(file);
+    return 0;
+}
+
+
 // Function to initialize the property list
 void initPropertiesList(PropertiesList* list){
     list->head = NULL;
@@ -190,10 +215,9 @@ void savePropertyToFile(Property* property) {
     fclose(file);
 }
 
-void printProperties(const User* user){
-    
+void printProperties(const User* user, int showMenu) {
     clearScreen();
-    
+
     FILE* file = fopen(FILENAME, "r");
     if (file == NULL) {
         printf("Erro: Não foi possível abrir o ficheiro de propriedades\n");
@@ -219,28 +243,29 @@ void printProperties(const User* user){
 
         token = strtok(NULL, ";");
         printf("Data: %s\n", token);
-
+        
         token = strtok(NULL, ";");
         printf("Agente: %s", token);
     }
 
-//    display_properties_menu(user);
+    fclose(file);
 
-    // ask user if he wants to return to the main menu
-    int choice;
-    printf("============================================\n");
-    printf("1. Voltar\n");
-    printf("0. Sair\n");
-    printf("============================================\n");
-    printf("Escolha uma opção: ");
-    scanf("%d", &choice);
-    clearBuffer();
-    
-    if(choice == 1){
-        fclose(file);
-        display_properties_menu(user);
-    } else {
-        exit_system();
+    if (showMenu) {
+        int choice;
+        printf("\n");
+        printf("============================================\n");
+        printf("1. Voltar\n");
+        printf("0. Sair\n");
+        printf("============================================\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &choice);
+        clearBuffer();
+
+        if(choice == 1) {
+            display_properties_menu(user);
+        } else {
+            exit_system();
+        }
     }
 }
 
@@ -254,42 +279,11 @@ void printProperties(const User* user){
 void removeProperty(PropertiesList* list, const User* user) {
     clearScreen();
 
-    FILE* file = fopen(FILENAME, "r");
-    if (file == NULL) {
-        printf("Erro: Não foi possível abrir o ficheiro de propriedades\n");
-        return;
-    }
-
-    printf("Propriedades cadastradas:\n");
-    char line[1024];
-    while (fgets(line, sizeof(line), file)) {
-        char lineCopy[1024];
-        strcpy(lineCopy, line);
-
-        char* token = strtok(line, ";");
-        printf("============================================\n");
-
-        printf("ID: %s\n", token);
-
-        token = strtok(NULL, ";");
-        printf("Morada: %s\n", token);
-
-        token = strtok(NULL, ";");
-        printf("Descrição: %s\n", token);
-
-        token = strtok(NULL, ";");
-        printf("Preço: %s €\n", token);
-
-        token = strtok(NULL, ";");
-        printf("Data: %s\n", token);
-
-        token = strtok(NULL, ";");
-        printf("Agente: %s", token);
-    }
-
-    fclose(file);
+    // Chama a função printProperties sem mostrar o menu
+    printProperties(user, 0);
 
     int id;
+    printf("\n");
     printf("============================================\n");
     printf("Insira o ID da propriedade que deseja remover (0 para voltar): ");
     scanf("%d", &id);
@@ -300,7 +294,7 @@ void removeProperty(PropertiesList* list, const User* user) {
         return;
     }
 
-    file = fopen(FILENAME, "r");
+    FILE* file = fopen(FILENAME, "r");
     if (file == NULL) {
         printf("Erro: Não foi possível abrir o ficheiro de propriedades\n");
         return;
@@ -313,6 +307,7 @@ void removeProperty(PropertiesList* list, const User* user) {
         return;
     }
 
+    char line[1024];
     while (fgets(line, sizeof(line), file)) {
         char lineCopy[1024];
         strcpy(lineCopy, line);
@@ -332,7 +327,7 @@ void removeProperty(PropertiesList* list, const User* user) {
 
     printf("Propriedade removida com sucesso!\n");
 
-    // ask user if he wants to remove another property
+    // Pergunta ao usuário se deseja remover outra propriedade
     int choice;
     printf("============================================\n");
     printf("1. Remover outra propriedade\n");
@@ -351,3 +346,201 @@ void removeProperty(PropertiesList* list, const User* user) {
         exit_system();
     }
 }
+
+// function to edit a property by ID from the file txt and from the list
+// - start using the function printProperties for user see the properties and choose the ID
+// - ask the user for the ID of the property to edit
+// - ask the user what he want to edit, like this question (What do you want to edit? 1 - Morada, 2 - Descrição, 3 - Preço, 4 - Data, 5 - Agente, 0 - Sair)
+// - ask the user for the new value
+// - write the new value in the file txt
+// - ask the user after the edit if he wants to edit another property if not return to the main menu
+
+void editProperty(PropertiesList* list, const User* user) {
+    clearScreen();
+
+    // Chama a função printProperties sem mostrar o menu
+    printProperties(user, 0);
+
+    int id;
+    // numero de tentativas que usuario falhou ao inserir o ID
+    int attempts = 0;
+    do {
+        // only if attemppts = 0 printf("\n");
+        if (attempts > 0) {
+            printf("============================================\n");
+            printf("Erro: O ID da propriedade escolhida não existe\n");
+        }
+        else {
+            printf("\n");
+        }
+        printf("============================================\n");
+        printf("Insira o ID da propriedade que deseja editar (0 para voltar): ");
+        scanf("%d", &id);
+        clearBuffer();
+
+        if (id == 0) {
+            display_properties_menu(user);
+            return;
+        }
+
+        FILE* file = fopen(FILENAME, "r");
+        if (file == NULL) {
+            printf("Erro: Não foi possível abrir o ficheiro de propriedades\n");
+            return;
+        }
+
+        if (!checkPropertyId(id)) {
+            attempts++;
+            fclose(file);  // Fecha o arquivo aberto para verificar o ID
+        } else {
+            // Fecha o arquivo aberto e sai do loop caso o ID seja válido
+            fclose(file);
+            break;
+        }
+    } while (1);
+
+
+    FILE* file = fopen(FILENAME, "r");
+    if (file == NULL) {
+        printf("Erro: Não foi possível abrir o ficheiro de propriedades\n");
+        return;
+    }
+
+    FILE* tempFile = fopen("/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/temp.txt", "w");
+    if (tempFile == NULL) {
+        printf("Erro: Não foi possível criar o ficheiro temporário\n");
+        fclose(file);
+        return;
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), file)) {
+        char lineCopy[1024];
+        strcpy(lineCopy, line);
+
+        char* token = strtok(lineCopy, ";");
+        int currentId = atoi(token);
+        if (currentId == id) {
+            // Editar a propriedade
+            printf("============================================\n");
+            printf("1. Editar Morada\n");
+            printf("2. Editar Descrição\n");
+            printf("3. Editar Preço\n");
+            printf("4. Editar Data\n");
+            printf("5. Editar Agente\n");
+            printf("0. Sair\n");
+            printf("============================================\n");
+            printf("O que deseja editar? ");
+            int choice;
+            scanf("%d", &choice);
+            clearBuffer();
+
+            char idStr[50], address[256], description[256], price[50], date[50], agent[256];
+
+            strcpy(idStr, token);
+            token = strtok(NULL, ";");
+            strcpy(address, token);
+            token = strtok(NULL, ";");
+            strcpy(description, token);
+            token = strtok(NULL, ";");
+            strcpy(price, token);
+            token = strtok(NULL, ";");
+            strcpy(date, token);
+            token = strtok(NULL, ";");
+            strcpy(agent, token);
+
+            switch (choice) {
+                case 1:
+                    printf("Morada atual: %s\n", address);
+                    printf("Insira a nova morada: ");
+                    if (fgets(address, sizeof(address), stdin) == NULL) {
+                        clearBuffer();
+                        continue;
+                    }
+                    address[strcspn(address, "\n")] = '\0'; // Remove newline character
+                    break;
+                case 2:
+                    printf("Descrição atual: %s\n", description);
+                    printf("Insira a nova descrição: ");
+                    if (fgets(description, sizeof(description), stdin) == NULL) {
+                        clearBuffer();
+                        continue;
+                    }
+                    description[strcspn(description, "\n")] = '\0'; // Remove newline character
+                    break;
+                case 3:
+                    printf("Preço atual: %s €\n", price);
+                    printf("Insira o novo preço: ");
+                    if (fgets(price, sizeof(price), stdin) == NULL) {
+                        clearBuffer();
+                        continue;
+                    }
+                    price[strcspn(price, "\n")] = '\0'; // Remove newline character
+                    break;
+                case 4:
+                    printf("Data atual: %s\n", date);
+                    printf("Insira a nova data: ");
+                    if (fgets(date, sizeof(date), stdin) == NULL) {
+                        clearBuffer();
+                        continue;
+                    }
+                    date[strcspn(date, "\n")] = '\0'; // Remove newline character
+                    break;
+                case 5:
+                    printf("Agente atual: %s\n", agent);
+                    printf("Insira o novo agente: ");
+                    if (fgets(agent, sizeof(agent), stdin) == NULL) {
+                        clearBuffer();
+                        continue;
+                    }
+                    agent[strcspn(agent, "\n")] = '\0'; // Remove newline character
+                    break;
+                case 0:
+                    fclose(file);
+                    fclose(tempFile);
+                    remove("/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/temp.txt");
+                    display_properties_menu(user);
+                    return;
+                default:
+                    printf("Opção inválida\n");
+                    break;
+            }
+
+            // Remonta a linha com as atualizações
+            fprintf(tempFile, "%s;%s;%s;%s;%s;%s", idStr, address, description, price, date, agent);
+        } else {
+            fprintf(tempFile, "%s", line);
+        }
+    }
+
+    fclose(file);
+    fclose(tempFile);
+
+    remove(FILENAME);
+    rename("/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/temp.txt", FILENAME);
+
+    printf("Propriedade editada com sucesso!\n");
+
+    // Pergunta ao usuário se deseja editar outra propriedade
+    int choice;
+    printf("============================================\n");
+    printf("1. Editar outra propriedade\n");
+    printf("2. Voltar\n");
+    printf("0. Sair\n");
+    printf("============================================\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &choice);
+    clearBuffer();
+
+    if (choice == 1) {
+        editProperty(list, user);
+    } else if (choice == 2) {
+        display_properties_menu(user);
+    } else {
+        exit_system();
+    }
+}
+
+
+
+

@@ -24,7 +24,8 @@ typedef struct {
 void initPropertiesList(PropertiesList* list);
 Property* createProperty(PropertiesList* list, const User* user);
 void addProperty(PropertiesList* list, Property* newProperty);
-void printProperties(const User *user);
+void printProperties(const User* user, int showMenu);
 void display_all_users_data(const User *user);
 void removeProperty(PropertiesList* list, const User* user);
+void editProperty(PropertiesList* list, const User* user);
 #endif
