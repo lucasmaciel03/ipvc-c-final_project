@@ -56,10 +56,10 @@ void initPropertiesList(PropertiesList* list){
 }
 
 // Function to create a new property
-Property* createProperty(PropertiesList* list, const User* user){
+Property* createProperty(const User* user, const char* owner){
     clearScreen();
     Property* newProperty = (Property*)malloc(sizeof(Property));
-    
+
     double price;
     char priceStr[50];
 
@@ -68,7 +68,7 @@ Property* createProperty(PropertiesList* list, const User* user){
         return NULL;
     }
 
-    newProperty->id = list->nextId++;
+    newProperty->id = calculateNextId();
 
     printf("Insira os dados da propriedade (0 para voltar)\n");
     printf("============================================\n");
@@ -132,7 +132,7 @@ Property* createProperty(PropertiesList* list, const User* user){
 
     // Input Data da Propriedade
     getCurrentDate(newProperty->data);
-    
+
     // Input Agente da Propriedade
     do {
         printf("Insira o agente da propriedade: ");
@@ -158,8 +158,8 @@ Property* createProperty(PropertiesList* list, const User* user){
         }
     } while (strlen(newProperty->agente) == 0 || newProperty->agente[0] == ' ');
 
-    strcpy(newProperty->proprietario, "Imobiliária");
-    
+    strcpy(newProperty->proprietario, owner);
+
     // Definir o status
     newProperty->status = ANUNCIADA;
 
@@ -168,7 +168,7 @@ Property* createProperty(PropertiesList* list, const User* user){
 
     // Save the property to the file
     savePropertyToFile(newProperty);
-    
+
     return newProperty;
 }
 
@@ -613,7 +613,7 @@ void printPropertiesToSale(const User* user, int showMenu) {
         token = strtok(NULL, ";");
         int status = atoi(token);
 
-        if (status == ANUNCIADA) {
+        if (status == ANUNCIADA && strcmp(owner, user->username) != 0) {
             printf("============================================\n");
             printf("ID: %d\n", id);
             printf("Morada: %s\n", address);
@@ -626,8 +626,71 @@ void printPropertiesToSale(const User* user, int showMenu) {
     }
 
     fclose(file);
-
 }
 
+// Criar função que retorna as propriedades do proprietário atual
+void printPropertiesByOwner(const User* user) {
+    clearScreen();
 
+    FILE *file = fopen(FILENAME, "r");
+    if (file == NULL) {
+        printf("Erro: Não foi possível abrir o ficheiro de propriedades\n");
+        return;
+    }
+
+    printf("As suas propriedades:\n");
+    char line[1024];
+    while (fgets(line, sizeof(line), file)) {
+        char *token = strtok(line, ";");
+        int id = atoi(token);
+
+        token = strtok(NULL, ";");
+        char address[256];
+        strcpy(address, token);
+
+        token = strtok(NULL, ";");
+        char description[256];
+        strcpy(description, token);
+
+        token = strtok(NULL, ";");
+        double price = atof(token);
+
+        token = strtok(NULL, ";");
+        char date[50];
+        strcpy(date, token);
+
+        token = strtok(NULL, ";");
+        char agent[256];
+        strcpy(agent, token);
+
+        token = strtok(NULL, ";");
+        char owner[256];
+        strcpy(owner, token);
+
+        token = strtok(NULL, ";");
+        int status = atoi(token);
+
+        if (strcmp(owner, user->username) == 0) {
+            printf("============================================\n");
+            printf("ID: %d\n", id);
+            printf("Morada: %s\n", address);
+            printf("Descrição: %s\n", description);
+            printf("Preço: %.2f €\n", price);
+            printf("Data: %s\n", date);
+            printf("Agente: %s\n", agent);
+            printf("Proprietário: %s\n", owner);
+            if (status == ANUNCIADA) {
+                printf("Status: Anunciada\n");
+            } else if (status == ARRENDADA) {
+                printf("Status: Arrendada\n");
+            } else if (status == VENDIDA) {
+                printf("Status: Vendida\n");
+            } else {
+                printf("Status: Indefinido\n");
+            }
+        }
+    }
+
+    fclose(file);
+}
 

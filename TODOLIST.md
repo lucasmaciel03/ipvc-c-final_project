@@ -42,18 +42,18 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 - [X] Implementar a funcionalidade para editar agentes.
 - [X] Implementar a funcionalidade para remover agentes.
 - [X] Implementer a funcionalidade para listar agentes por username.
-- [ ] Implementar a funcionalidade para listar agentes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).
-- [ ] Implementar a funcionalidade para listar agentes por idade ascendente (Algoritmos de ordenação - Semana 4).
-- [ ] Implementar a funcionalidade para colocar um agente como indisponível.
+- [X] Implementar a funcionalidade para listar agentes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).
+- [X] Implementar a funcionalidade para listar agentes por idade ascendente (Algoritmos de ordenação - Semana 4).
+- [X] Implementar a funcionalidade para colocar um agente como indisponível.
     - Armazenar dados dos agentes em estruturas de listas ligadas para fácil manipulação (Semana 7).
 
 ### Relatórios de Agentes
 
-- [ ] Desenvolver a funcionalidade para gerar um relatório em arquivo de texto com todas as informações dos agentes.
+- [X] Desenvolver a funcionalidade para gerar um relatório em arquivo de texto com todas as informações dos agentes.
 
 ### Gestão de Clientes
 
-- [ ] Implementar a funcionalidade para criar clientes.
+- [X] Implementar a funcionalidade para criar clientes.
 - [ ] Implementar a funcionalidade para atualizar clientes.
 - [ ] Implementar a funcionalidade para remover clientes.
 - [ ] Implementar a funcionalidade para listar clientes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).

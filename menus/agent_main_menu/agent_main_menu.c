@@ -7,9 +7,15 @@ void display_agent_main_menu(const User *user){
 
     printf("Bem Vindo, %s\n", user->username);
     printf("============================================\n");
-    printf("1. Agendamento e Gestão de Visitas\n");
-    printf("2. Gestão de Filas de Espera\n");
-    printf("3. Sair\n");
+    printf("1. Gerir Clientes\n");
+    printf("2. Listar clientes por ordem alfabética de nome\n");
+    printf("3. Listar cliente pelo NIF\n");
+    printf("4. Agendar uma visita\n");
+    printf("5. Listar todas as visitas de hoje ou de um determinado dia\n");
+    printf("6. Listar todas as visitas de um determinado cliente\n");
+    printf("7. Listar todas as visitas a uma determinada propriedade\n");
+    printf("8. Listar todas as visitas onde cliente não compareceu\n");
+    printf("9. Faturamento hoje e este mês\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);

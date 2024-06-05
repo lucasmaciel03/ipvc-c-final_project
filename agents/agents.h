@@ -32,5 +32,6 @@ void orderAgentByAge(const User *user);
 void setAgentUnavailable(const User *user);
 int isAgentAvailable(const char* username);
 void generateReport(const User *user);
+void calculateAge(const char *dataNascimento, char *idade);
 
 #endif

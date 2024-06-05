@@ -28,7 +28,7 @@ void display_properties_menu(const User *user){
         case 1:
             
             do{
-                Property* newProperty = createProperty(&list, user);
+                Property* newProperty = createProperty(user, "Imobiliária");
                 if(newProperty){
                     addProperty(&list, newProperty);
                 }

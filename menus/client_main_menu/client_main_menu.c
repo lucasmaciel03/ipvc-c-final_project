@@ -14,7 +14,7 @@ void display_client_main_menu(const User *user){
     printf("1. Procurar Propriedadea\n");
     printf("2. Anunciar Propriedade\n");
     printf("3. Minhas Propriedades\n");
-    printf("4. Marcar um Visita\n");
+    printf("4. Ver Visitas\n");
     printf("5. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
@@ -25,10 +25,10 @@ void display_client_main_menu(const User *user){
             propertiesList(user);
             break;
         case 2:
-            // visit_simulation();
+            announceProperty(user);
             break;
         case 3:
-            // display_all_users_data(user);
+            myProperties(user);
             break;
         case 4:
             // visit_simulation();
