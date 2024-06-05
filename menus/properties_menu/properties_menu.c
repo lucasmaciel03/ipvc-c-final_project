@@ -8,7 +8,9 @@ void display_properties_menu(const User *user){
 
     PropertiesList list;
     initPropertiesList(&list);
-
+    
+    clearScreen();
+    
     printf("Gestão de Propriedades\n");
     printf("============================================\n");
     printf("1. Criar Propriedades \n");
@@ -26,27 +28,24 @@ void display_properties_menu(const User *user){
         case 1:
             
             do{
-                Property* newProperty = createProperty(&list);
+                Property* newProperty = createProperty(&list, user);
                 if(newProperty){
                     addProperty(&list, newProperty);
-                    clearBuffer();
-                    printf("Propriedade criada com sucesso!\n");
                 }
-                
                 printf("Deseja criar outra propriedade? (1 - Sim, 0 - Não): ");
                 scanf("%d", &choice);
-                clearBuffer(); 
+                display_properties_menu(user);
+                clearBuffer();
             } while(choice == 1);
-            printProperties(&list);
             break;
         case 2:
-            // edit_property();
+            editProperty(&list, user);
             break;
         case 3:
-            // remove_property();
+            removeProperty(&list, user);
             break;
         case 4:
-            printProperties(&list);
+            printProperties(user, 1);
             break;
         case 5:
             display_menu(user);

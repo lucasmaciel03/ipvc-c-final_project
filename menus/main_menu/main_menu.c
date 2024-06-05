@@ -6,6 +6,7 @@
 void display_main_menu(){
     int choice;
 
+    clearScreen();
     printf("Bem Vindo ao Sistema de Gestão Imobiliária\n");
     printf("============================================\n");
     printf("1. Iniciar Sessão\n");

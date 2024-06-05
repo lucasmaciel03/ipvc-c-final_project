@@ -5,7 +5,12 @@
 #include "../../menus/agent_main_menu/agent_main_menu.h"
 #include "../../menus/client_main_menu/client_main_menu.h"
 
+#include "../../utils/utils.h"
+
+#define FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/users.dat"
+
 void display_menu(const User  *user){
+    
     switch (user->role) {
         case ADMIN:
             display_admin_main_menu(user);
@@ -20,7 +25,7 @@ void display_menu(const User  *user){
 }
 
 int isUsernameAvailable(const char* username){
-    FILE  *file = fopen("../data/users.dat", "rb");
+    FILE  *file = fopen(FILENAME, "rb");
     if (file == NULL) {
         printf("Error opening file!\n");
         return 0;
@@ -52,7 +57,7 @@ void createUser(const char* username, const char* password, UserRole role) {
     newUser.password[sizeof(newUser.password) - 1] = '\0'; // Ensure null-terminated string
     newUser.role = role;
     
-    FILE *file = fopen("../data/users.dat", "ab");
+    FILE *file = fopen(FILENAME, "ab");
     if (file == NULL) {
         printf("Error opening file!\n");
         return;
@@ -61,3 +66,5 @@ void createUser(const char* username, const char* password, UserRole role) {
     fwrite(&newUser, sizeof(User), 1, file);
     fclose(file);
 }
+
+// 

@@ -2,9 +2,9 @@
 #define USER_H
 
 typedef enum {
-    ADMIN,
-    AGENT,
-    CLIENT,
+    ADMIN, // 0
+    AGENT, // 1
+    CLIENT, // 2
 } UserRole;
 
 typedef struct {

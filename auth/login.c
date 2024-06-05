@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define FILENAME "../data/users.dat"
+#define FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/users.dat"
 
 
 int load_user(const char *username, const char *password, User *out_user)

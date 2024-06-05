@@ -5,7 +5,7 @@
 
 void display_agent_menu(const User *user){
     int choice;
-
+    
     printf("Gestão de Agentes\n");
     printf("============================================\n");
     printf("1. Criar novo Agente \n");
@@ -21,31 +21,32 @@ void display_agent_menu(const User *user){
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
+    clearBuffer();
     
 switch(choice){
         case 1:
-            createAgent(); //funciona
+            createAgent(user); 
             break;
         case 2:
-            editAgent(); //ainda não funciona
+            editAgent(user); 
             break;
         case 3:
-            deleteAgent(); //funciona
+            deleteAgent(user);
             break;
         case 4:
-            loadAgents(); //funciona
+            printAgents(user, 1); 
             break;
         case 5:
-            list_agent_by_name(); //funciona
+            listAgentByUsername(user);  
             break;
         case 6:
-            list_agent_by_name(); //funciona
+            orderAgentsByName(user);
             break;
         case 7:
-            list_agent_by_age(); //funciona
+            orderAgentByAge(user); 
             break;
         case 8:
-            set_agent_unavailable(); //funciona
+            setAgentUnavailable(user);
             break;
         case 9:
             display_menu(user);

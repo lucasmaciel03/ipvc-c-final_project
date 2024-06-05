@@ -7,8 +7,9 @@ void display_client_main_menu(const User *user){
 
     printf("Bem Vindo, %s\n", user->username);
     printf("============================================\n");
-    printf("1. Simulação de Visita\n");
-    printf("2. Sair\n");
+    printf("1. Procurar Propriedadea\n");
+    printf("2. Simulação de Visita\n");
+    printf("3. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
@@ -18,6 +19,9 @@ void display_client_main_menu(const User *user){
             // estate_menu();
             break;
         case 2:
+            // visit_simulation();
+            break;
+        case 3:
             exit_system();
             break;
         default:

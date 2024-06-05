@@ -31,17 +31,17 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 ### Gestão de Propriedades
 
 - [X] Implementar a funcionalidade para criar tipos de propriedades.
-- [ ] Implementar a funcionalidade para editar tipos de propriedades.
-- [ ] Implementar a funcionalidade para remover tipos de propriedades.
+- [X] Implementar a funcionalidade para editar tipos de propriedades.
+- [X] Implementar a funcionalidade para remover tipos de propriedades.
 - [X] Implementar a funcionalidade para listar tipos de propriedades e seus preços.
     - Usar listas duplamente ligadas para gestão eficiente da lista de propriedades (Semana 9).
 
 ### Gestão de Agentes
 
 - [x] Implementar a funcionalidade para criar agentes.
-- [ ] Implementar a funcionalidade para editar agentes.
-- [ ] Implementar a funcionalidade para remover agentes.
-- [ ] Implementer a funcionalidade para listar agentes por id.
+- [X] Implementar a funcionalidade para editar agentes.
+- [X] Implementar a funcionalidade para remover agentes.
+- [X] Implementer a funcionalidade para listar agentes por username.
 - [ ] Implementar a funcionalidade para listar agentes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).
 - [ ] Implementar a funcionalidade para listar agentes por idade ascendente (Algoritmos de ordenação - Semana 4).
 - [ ] Implementar a funcionalidade para colocar um agente como indisponível.

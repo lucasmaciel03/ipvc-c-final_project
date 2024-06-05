@@ -51,3 +51,34 @@ void trimWhitespace(char* str) {
     // Write new null terminator
     *(end + 1) = '\0';
 }
+
+int isValidDate(const char *date) {
+    int day, month, year;
+    if (sscanf(date, "%d/%d/%d", &day, &month, &year) != 3) {
+        return 0;
+    }
+
+    // Verificar ano razoável
+    if (year < 1900 || year > 2100) {
+        return 0;
+    }
+
+    // Verificar mês válido
+    if (month < 1 || month > 12) {
+        return 0;
+    }
+
+    // Verificar dia válido para cada mês
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Verificar ano bissexto
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        daysInMonth[1] = 29;
+    }
+
+    if (day < 1 || day > daysInMonth[month - 1]) {
+        return 0;
+    }
+
+    return 1;
+}

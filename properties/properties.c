@@ -166,10 +166,11 @@ Property* createProperty(PropertiesList* list, const User* user){
         if (strlen(newProperty->agente) == 0) {
             printf("Erro: A propriedade deve ter um agente definido\n");
         } else {
-//            if (!checkAgentUsername(newProperty->agente)) {
-//                printf("Erro: O agente não existe ou não está disponível\n");
-//                newProperty->agente[0] = '\0'; // Clear the string
-//            }
+            // utilizar função agentExists para verificar se o agente existe
+            if (!agentExistsv2(newProperty->agente)) {
+                printf("Erro: O agente inserido não existe ou não está disponível\n");
+                newProperty->agente[0] = ' '; // Force the loop to ask again
+            }
         }
     } while (strlen(newProperty->agente) == 0 || newProperty->agente[0] == ' ');
 

@@ -6,4 +6,6 @@
 
 void display_all_users_data(const User *user);
 
+void clear_all_users_data(const User *user);
+
 #endif

@@ -24,4 +24,5 @@ add_executable(ipvc_c_final_project main.c
         data_base/data_base.h
         data_base/data_base.c
         clients/clients.c
-        clients/clients.h)
+        clients/clients.h
+)

@@ -6,5 +6,6 @@ void clearBuffer();
 void pause();
 void exit_system();
 void trimWhitespace(char* str);
+int isValidDate(const char *date);
 
 #endif
