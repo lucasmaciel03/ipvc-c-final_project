@@ -9,6 +9,7 @@
 #define FILENAME_TXT "../data/agents.txt"
 #define FILENAME_DAT "../data/users.dat"
 #define FILENAME_PROPS "../data/properties.txt"
+#define FILENAME_REPORT "../data/agents_report.txt"
 
 Agent agents[MAX_AGENTS];
 int numAgents = 0;
@@ -27,6 +28,36 @@ int agentExistsv2(const char* username) {
         }
     }
 
+    fclose(file);
+    return 0;
+}
+
+// function to verify if user is available
+int isAgentAvailable(const char* username) {
+    FILE* file = fopen(FILENAME_TXT, "r");
+    if (file == NULL) {
+        return 0;
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), file)) {
+        char* token = strtok(line, ";");
+        if (strcmp(token, username) == 0) {
+            // Check if the agent is available
+            token = strtok(NULL, ";");
+            token = strtok(NULL, ";");
+            token = strtok(NULL, ";");
+            token = strtok(NULL, ";");
+            token = strtok(NULL, ";");
+            token = strtok(NULL, ";");
+            token = strtok(NULL, ";");
+            if (atoi(token) == DISPONIVEL) {
+                fclose(file);
+                return 1;
+            }
+        }
+    }
+    
     fclose(file);
     return 0;
 }
@@ -913,8 +944,6 @@ void orderAgentByAge(const User *user){
     }
 }
 
-// Função Colocar Agente como Indisponível
-// lista os agentes disponíveis e permite ao utilizador escolher um agente para colocar como indisponível
 void setAgentUnavailable(const User *user) {
     clearScreen();
 
@@ -1047,4 +1076,58 @@ void setAgentUnavailable(const User *user) {
         exit_system();
     }
 }
+
+void generateReport(const User *user) {
+    clearScreen();
+
+    FILE *file = fopen(FILENAME_TXT, "r");
+    if(file == NULL){
+        printf("Erro ao abrir ficheiro\n");
+        return;
+    }
+
+    FILE *reportFile = fopen(FILENAME_REPORT, "w");
+    if(reportFile == NULL){
+        printf("Erro ao criar ficheiro\n");
+        fclose(file);
+        return;
+    }
+
+    fprintf(reportFile, "Relatório de Agentes\n");
+    fprintf(reportFile, "============================================\n");
+
+    char line[1024];
+    while(fgets(line, sizeof(line), file)){
+        char* token = strtok(line, ";");
+        fprintf(reportFile, "Username: %s\n", token);
+        token = strtok(NULL, ";");
+        fprintf(reportFile, "Nome: %s\n", token);
+        token = strtok(NULL, ";");
+        fprintf(reportFile, "NIF: %s\n", token);
+        token = strtok(NULL, ";");
+        fprintf(reportFile, "Morada: %s\n", token);
+        token = strtok(NULL, ";");
+        fprintf(reportFile, "Contacto: %s\n", token);
+        token = strtok(NULL, ";");
+        fprintf(reportFile, "Data de Nascimento: %s\n", token);
+        token = strtok(NULL, ";");
+        fprintf(reportFile, "Idade: %s\n", token);
+        token = strtok(NULL, ";");
+        if(atoi(token) == DISPONIVEL){
+            fprintf(reportFile, "Estado: Disponível\n");
+        } else {
+            fprintf(reportFile, "Estado: Indisponível\n");
+        }
+        fprintf(reportFile, "============================================\n");
+    }
+
+    fclose(file);
+    fclose(reportFile);
+
+    printf("Relatório gerado com sucesso!\n");
+
+    display_agent_menu(user);
+   
+}
+
 

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 
 #ifdef _WIN32
 #define CLEAR "cls"
@@ -81,4 +82,11 @@ int isValidDate(const char *date) {
     }
 
     return 1;
+}
+
+// create a function to get the current date in the format dd/mm/yyyy
+void getCurrentDate(char *date) {
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    sprintf(date, "%02d/%02d/%d", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
 }

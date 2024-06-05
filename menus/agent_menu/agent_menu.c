@@ -16,7 +16,8 @@ void display_agent_menu(const User *user){
     printf("6. Listar Agentes por ordem alfabética do nome \n");
     printf("7. Listar Agentes por idade ascendente \n");
     printf("8. Colocar Agente como Indisponível \n");
-    printf("9. Voltar\n");
+    printf("9. Gerar relatório de Agentes \n");
+    printf("10. Voltar\n");
     printf("0. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
@@ -49,6 +50,9 @@ switch(choice){
             setAgentUnavailable(user);
             break;
         case 9:
+            generateReport(user);
+            break;
+        case 10:
             display_menu(user);
             break;
         case 0:

@@ -3,13 +3,21 @@
 
 #include "../auth/users/user.h"
 
+typedef enum{
+    VENDIDA, // 0
+    ANUNCIADA, // 1
+    ARRENDADA // 2
+} PropertyStatus;
+
 typedef struct Property {
     int id;
     char morada[50];
-    char descricao[20];
+    char descricao[55];
     double preco;
-    char data[10];
+    char data[11];
     char agente[20];
+    char proprietario[50];
+    PropertyStatus status;
     struct Property *next;
     struct Property *prev;
 } Property;
@@ -28,4 +36,5 @@ void printProperties(const User* user, int showMenu);
 void display_all_users_data(const User *user);
 void removeProperty(PropertiesList* list, const User* user);
 void editProperty(PropertiesList* list, const User* user);
+void printPropertiesToSale(const User* user, int showMenu);
 #endif

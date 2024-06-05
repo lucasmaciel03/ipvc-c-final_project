@@ -1,0 +1,29 @@
+Relatório de Agentes
+============================================
+Username: paulotiago06
+Nome: paulo
+NIF: 12
+Morada: ok
+Contacto: 91
+Data de Nascimento: 20/01/2000
+Idade: 24
+Estado: Disponível
+============================================
+Username: antoniosilva
+Nome: António Silva
+NIF: 90
+Morada: Rua da Igreja
+Contacto: 910
+Data de Nascimento: 02/05/2000
+Idade: 24
+Estado: Disponível
+============================================
+Username: yannicdjalo
+Nome: Yannic
+NIF: 12
+Morada: ok
+Contacto: 12
+Data de Nascimento: 20/05/2006
+Idade: 18
+Estado: Indisponível
+============================================

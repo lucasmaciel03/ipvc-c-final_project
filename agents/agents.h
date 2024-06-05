@@ -30,5 +30,7 @@ void listAgentByUsername(const User *user);
 void orderAgentsByName(const User *user);
 void orderAgentByAge(const User *user);
 void setAgentUnavailable(const User *user);
+int isAgentAvailable(const char* username);
+void generateReport(const User *user);
 
 #endif
