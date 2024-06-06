@@ -105,7 +105,8 @@ void calculateAge(const char *dataNascimento, char *idade) {
 
 void createAgent(const User *user) {
     if (countAgents() == MAX_AGENTS) {
-        printf("Número máximo de agentes atingido\n");
+        printf("Número máximo de agentes atingido!\n");
+        display_agent_menu(user);
         return;
     }
     
