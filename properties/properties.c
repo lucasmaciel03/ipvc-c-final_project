@@ -161,7 +161,23 @@ Property* createProperty(const User* user, const char* owner){
     strcpy(newProperty->proprietario, owner);
 
     // Definir o status
-    newProperty->status = ANUNCIADA;
+    // Definir o status
+    int statusChoice;
+    do {
+        printf("Escolha o status da propriedade:\n");
+        printf("1. Anunciada\n");
+        printf("2. Casa Aberta\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &statusChoice);
+        clearBuffer();
+        if (statusChoice == 1) {
+            newProperty->status = ANUNCIADA;
+        } else if (statusChoice == 2) {
+            newProperty->status = CASA_ABERTA;
+        } else {
+            printf("Opção inválida. Tente novamente.\n");
+        }
+    } while (statusChoice != 1 && statusChoice != 2);
 
     newProperty->next = NULL;
     newProperty->prev = NULL;
@@ -251,6 +267,8 @@ void printProperties(const User* user, int showMenu) {
             printf("Status: Arrendada\n");
         } else if (status == VENDIDA) {
             printf("Status: Vendida\n");
+        } else if (status == CASA_ABERTA) {
+            printf("Status: Casa Aberta\n");
         } else {
             printf("Status: Indefinido\n");
         }
@@ -425,8 +443,8 @@ void editProperty(PropertiesList* list, const User* user) {
             token = strtok(NULL, ";");
             status = atoi(token);
 
-            // Verifica se a propriedade está disponível para venda
-            if (status != ANUNCIADA) {
+            // Verifica se a propriedade possui o status VENDIDA ou ARRENDADA
+            if (status == VENDIDA || status == ARRENDADA) {
                 printf("Erro: A propriedade escolhida não está disponível para edição\n");
                 propertyFound = 1;
                 fprintf(tempFile, "%s", line);  // Escreve a linha original de volta no arquivo temporário
@@ -613,7 +631,7 @@ void printPropertiesToSale(const User* user, int showMenu) {
         token = strtok(NULL, ";");
         int status = atoi(token);
 
-        if (status == ANUNCIADA && strcmp(owner, user->username) != 0) {
+        if (status == ANUNCIADA || status == CASA_ABERTA && strcmp(owner, user->username) != 0) {
             printf("============================================\n");
             printf("ID: %d\n", id);
             printf("Morada: %s\n", address);
@@ -685,6 +703,8 @@ void printPropertiesByOwner(const User* user) {
                 printf("Status: Arrendada\n");
             } else if (status == VENDIDA) {
                 printf("Status: Vendida\n");
+            } else if (status == CASA_ABERTA) {
+                printf("Status: Casa Aberta\n");
             } else {
                 printf("Status: Indefinido\n");
             }

@@ -25,6 +25,6 @@ add_executable(ipvc_c_final_project main.c
         data_base/data_base.c
         clients/clients.c
         clients/clients.h
-        menus/agent_client_menu/agent_client_menu.c
-        menus/agent_client_menu/agent_client_menu.h
+        role_agents/role_agents.c
+        role_agents/role_agents.h
 )

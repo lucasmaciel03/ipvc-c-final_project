@@ -6,7 +6,8 @@
 typedef enum{
     VENDIDA, // 0
     ANUNCIADA, // 1
-    ARRENDADA // 2
+    ARRENDADA, // 2
+    CASA_ABERTA // 3
 } PropertyStatus;
 
 typedef struct Property {

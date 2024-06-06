@@ -14,11 +14,15 @@ void display_client_main_menu(const User *user){
     printf("1. Procurar Propriedadea\n");
     printf("2. Anunciar Propriedade\n");
     printf("3. Minhas Propriedades\n");
-    printf("4. Ver Visitas\n");
-    printf("5. Sair\n");
+    printf("4. Ver minhas Visitas\n");
+    printf("5. Visitar Casa\n");
+    printf("6. Editar Perfil\n");
+    printf("7. Eliminar Perfil\n");
+    printf("8. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
+    clearBuffer();
 
     switch(choice){
         case 1:
@@ -34,6 +38,15 @@ void display_client_main_menu(const User *user){
             // visit_simulation();
             break;
         case 5:
+            // visit_simulation();
+            break;
+        case 6:
+            updateClientProfile(user);
+            break;
+        case 7:
+            deleteAccount(user);
+            break;
+        case 8:
             exit_system();
             break;
         default:

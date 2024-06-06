@@ -19,7 +19,7 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 
 - [x] Configurar o repositório do projeto.
 - [x] Definir a estrutura de diretórios.
-- [ ] Configurar o controle de versão.
+- [X] Configurar o controle de versão.
 - Usar Ficheiros texto para armazenamento inicial de dados (Semana 1).
 
 ### Implementação de Login
@@ -54,24 +54,24 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 ### Gestão de Clientes
 
 - [X] Implementar a funcionalidade para criar clientes.
-- [ ] Implementar a funcionalidade para atualizar clientes.
-- [ ] Implementar a funcionalidade para remover clientes.
-- [ ] Implementar a funcionalidade para listar clientes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).
-- [ ] Implementar a funcionalidade para apresentar informações baseadas no NIF (Algoritmos de pesquisa - Semana 5).
+- [X] Implementar a funcionalidade para atualizar clientes.
+- [X] Implementar a funcionalidade para remover clientes.
+- [X] Implementar a funcionalidade para listar clientes por ordem alfabética do nome (Algoritmos de ordenação - Semana 4).
+- [X] Implementar a funcionalidade para apresentar informações baseadas no NIF (Algoritmos de pesquisa - Semana 5).
 
 ### Agendamento e Gestão de Visitas
 
-- [ ] Implementar a funcionalidade para agendar uma visita (Listas duplamente ligadas - Semana 9).
-- [ ] Implementar a funcionalidade para listar todas as visitas de hoje e de um determinado dia, ordenadas por hora.
-- [ ] Implementar a funcionalidade para listar visitas de um determinado agente em um dia específico.
-- [ ] Implementar a funcionalidade para listar visitas por tipo de propriedade.
-- [ ] Implementar a funcionalidade para saber o histórico de visitas a uma determinada propriedade.
-- [ ] Implementar a funcionalidade para simular uma visita (incluir agente, data e hora).
+- [X] Implementar a funcionalidade para agendar uma visita (Listas duplamente ligadas - Semana 9).
+- [X] Implementar a funcionalidade para listar todas as visitas de hoje e de um determinado dia, ordenadas por hora.
+- [X] Implementar a funcionalidade para listar visitas de um determinado cliente.
+- [X] Implementar a funcionalidade para listar visitas por tipo de propriedade.
+- [X] Implementar a funcionalidade para saber o histórico de visitas a uma determinada propriedade.
+- [X] Implementar a funcionalidade para simular uma visita (incluir agente, data e hora).
 
 ### Relatórios de Visitas
 
-- [ ] Implementar a funcionalidade para listar as visitas em que o cliente não compareceu em um determinado dia.
-- [ ] Implementar a funcionalidade para saber quanto foi faturado hoje e este mês por cada tipo de propriedade.
+- [X] Implementar a funcionalidade para listar as visitas em que o cliente não compareceu em um determinado dia.
+- [X] Implementar a funcionalidade para saber quanto foi faturado hoje e este mês por cada tipo de propriedade.
 - [ ] Implementar a funcionalidade para saber quantas visitas cada agente realizou este mês.
 - [ ] Implementar a funcionalidade para gerar relatórios financeiros diários e mensais por tipo de propriedade.
 
