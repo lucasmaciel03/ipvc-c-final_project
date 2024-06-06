@@ -5,8 +5,8 @@
 #include "../menus/admin_main_menu/admin_main_menu.h"
 
 
-#define FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/users.dat"
-#define FILENAME_TXT "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/agents.txt"
+#define FILENAME "../data/users.dat"
+#define FILENAME_TXT "../data/agents.txt"
 
 
 void display_all_users_data(const User* user){
