@@ -6,6 +6,7 @@
 #include "../utils/utils.h"
 #include "../auth/users/user.h"
 #include "../menus/agent_menu/agent_menu.h"
+#include "../properties/properties.h"
 #define FILENAME_TXT "../data/agents.txt"
 #define FILENAME_DAT "../data/users.dat"
 #define FILENAME_PROPS "../data/properties.txt"
@@ -20,10 +21,13 @@ int agentExistsv2(const char* username) {
         return 0;
     }
 
+//    printf("Username RECEIVED: %s\n", username);
+
     User user;
     while (fread(&user, sizeof(User), 1, file) == 1) {
         if (strcmp(user.username, username) == 0 && user.role == AGENT) {
             fclose(file);
+//            printf("Username FOUND: %s\n", user.username);
             return 1;
         }
     }
@@ -527,6 +531,7 @@ void editAgent(const User* user) {
     }
 }
 
+
 void deleteAgent(const User* user) {
     clearScreen();
 
@@ -570,16 +575,15 @@ void deleteAgent(const User* user) {
         int agentHasProperties = 0;
         char propertiesLine[1024];
         while (fgets(propertiesLine, sizeof(propertiesLine), propertiesFile)) {
-            char* propId = strtok(propertiesLine, ";");
-            char* morada = strtok(NULL, ";");
-            char* descricao = strtok(NULL, ";");
-            strtok(NULL, ";"); // Skip preço
-            strtok(NULL, ";"); // Skip data
-            char* agente = strtok(NULL, "\n");
+            Property property;
+            sscanf(propertiesLine, "%d;%49[^;];%54[^;];%lf;%10[^;];%19[^;];%19[^;];%d",
+                   &property.id, property.morada, property.descricao, &property.preco,
+                   property.data, property.agente, property.proprietario, &property.status);
 
-            if (strcmp(agente, username) == 0) {
+            if (strcmp(property.agente, username) == 0) {
                 agentHasProperties = 1;
-                printf("O Agente \"%s\" tem a propriedade com o ID \"%s\" e com a descrição \"%s\" associada, não pode ser eliminado agora\n", username, propId, descricao);
+                printf("O Agente \"%s\" tem a propriedade com o ID \"%d\" e com a descrição \"%s\" associada, não pode ser eliminado agora\n",
+                       username, property.id, property.descricao);
                 break;
             }
         }
@@ -597,7 +601,7 @@ void deleteAgent(const User* user) {
             return;
         }
 
-        FILE* tempFile = fopen("temp.txt", "w");
+        FILE* tempFile = fopen("../data/temp_agents.txt", "w");
         if (tempFile == NULL) {
             printf("Erro: Não foi possível criar o ficheiro temporário\n");
             fclose(file);
@@ -624,13 +628,13 @@ void deleteAgent(const User* user) {
 
         if (!agentFound) {
             printf("Erro: O agente não foi encontrado\n");
-            remove("temp.txt");
+            remove("../data/temp_agents.txt");
             display_agent_menu(user);
             return;
         }
 
         remove(FILENAME_TXT);
-        rename("temp.txt", FILENAME_TXT);
+        rename("../data/temp_agents.txt", FILENAME_TXT);
 
         // Remover o agente do ficheiro .dat
         FILE* dataFile = fopen(FILENAME_DAT, "rb");
@@ -639,18 +643,18 @@ void deleteAgent(const User* user) {
             return;
         }
 
-        FILE* tempDataFile = fopen("temp.dat", "wb");
+        FILE* tempDataFile = fopen("../data/temp_users.dat", "wb");
         if (tempDataFile == NULL) {
             printf("Erro: Não foi possível criar o ficheiro temporário de dados\n");
             fclose(dataFile);
             return;
         }
 
-        Agent agent;
+        User userEntry;
         agentFound = 0;
-        while (fread(&agent, sizeof(Agent), 1, dataFile)) {
-            if (strcmp(agent.username, username) != 0) {
-                fwrite(&agent, sizeof(Agent), 1, tempDataFile);
+        while (fread(&userEntry, sizeof(User), 1, dataFile)) {
+            if (strcmp(userEntry.username, username) != 0) {
+                fwrite(&userEntry, sizeof(User), 1, tempDataFile);
             } else {
                 agentFound = 1;
             }
@@ -661,12 +665,12 @@ void deleteAgent(const User* user) {
 
         if (!agentFound) {
             printf("Erro: O agente não foi encontrado no ficheiro .dat\n");
-            remove("temp.dat");
+            remove("../data/temp_users.dat");
             return;
         }
 
         remove(FILENAME_DAT);
-        rename("temp.dat", FILENAME_DAT);
+        rename("../data/temp_users.dat", FILENAME_DAT);
 
         printf("Agente eliminado com sucesso!\n");
         clearBuffer();
@@ -692,7 +696,6 @@ void deleteAgent(const User* user) {
         }
     }
 }
-
 void listAgentByUsername(const User* user) {
     clearScreen();
 
