@@ -980,7 +980,7 @@ void simulateVisit(VisitList* visitList, const User* user) {
     getCurrentDate(currentDate);
 
     while (1) {
-        printf("Simular uma visita\n");
+        printf("Atualizar uma visita\n");
         printf("============================================\n");
 
         // Verificação da data da visita
@@ -1120,7 +1120,7 @@ void simulateVisit(VisitList* visitList, const User* user) {
 
         int choice2;
         printf("============================================\n");
-        printf("1. Simular outra visita\n");
+        printf("1. Atualizar outra visita\n");
         printf("2. Voltar ao menu principal\n");
         printf("3. Sair\n");
         printf("============================================\n");

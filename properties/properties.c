@@ -7,7 +7,7 @@
 #include "../auth/users/user.h"
 #include "../menus/properties_menu/properties_menu.h"
 
-#define FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/properties.txt"
+#define FILENAME "../data/properties.txt"
 
 void savePropertyToFile(Property* property);
 
