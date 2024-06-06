@@ -1,6 +1,50 @@
-1;rua;casa;2000.00;05/06/2024;paulotiago06;ronaldo;0
-2;rua;ok;123.00;05/06/2024;paulotiago06;Imobiliária;0
-3;rua;casa;90.00;05/06/2024;paulotiago06;ronaldo;1
-4;rua;casa;2000.00;06/06/2024;paulotiago06;Imobiliária;3
-5;rua;casa;20.00;06/06/2024;paulotiago06;ronaldo;3
-6;rua;casa;20000.00;06/06/2024;rubendias04;ronaldo;2
+1;Praça do Comércio, 123, 6000-050 Lisboa;Apartamento moderno no centro;256676;06/06/2024;fernandogomes17;joaoribeiro11;1
+2;Avenida da Liberdade, 200, 1000-003 Lisboa;T1 com cozinha equipada;476384;06/06/2024;marcoslima12;andrebrito7;1
+3;Rua das Flores, 10, 3000-001 Coimbra;Apartamento moderno no centro;176238;06/06/2024;ricardosantos08;anapereira77;1
+4;Rua do Ouro, 15, 9000-070 Braga;Apartamento moderno no centro;460656;06/06/2024;beatrizrocha05;anapereira77;1
+5;Avenida dos Aliados, 150, 5000-020 Porto;T3 com garagem;338666;06/06/2024;andreluiz21;anapereira77;1
+6;Rua do Almada, 50, 4000-200 Braga;Casa rústica com quintal;135728;06/06/2024;julianasilva11;anapereira77;1
+7;Praça da Sé, 5, 2000-002 Porto;Estúdio próximo à universidade;308928;06/06/2024;carolinaferreira14;joaoribeiro11;1
+8;Praça da Sé, 5, 2000-002 Porto;Cobertura com vista mar;364249;06/06/2024;gabrielfreitas03;joaoribeiro11;1
+9;Rua do Ouro, 15, 9000-070 Braga;Casa rústica com quintal;215321;06/06/2024;gabrielfreitas03;andrebrito7;1
+10;Rua do Ouro, 15, 9000-070 Braga;Casa rústica com quintal;413218;06/06/2024;carolinaferreira14;anapereira77;1
+11;Rua das Flores, 10, 3000-001 Coimbra;Moradia com piscina;470474;06/06/2024;diogoribeiro13;pedrogomes33;1
+12;Rua de Santa Catarina, 300, 8000-040 Porto;Cobertura com vista mar;106967;06/06/2024;julianasilva11;anapereira77;1
+13;Avenida dos Aliados, 150, 5000-020 Porto;T3 com garagem;259309;06/06/2024;isabelapereira07;Imobiliária;1
+14;Avenida da Liberdade, 200, 1000-003 Lisboa;T1 com cozinha equipada;480961;06/06/2024;ricardosantos08;pedrogomes33;1
+15;Praça do Comércio, 123, 6000-050 Lisboa;Estúdio próximo à universidade;458764;06/06/2024;carolinaferreira14;anapereira77;1
+16;Avenida dos Aliados, 150, 5000-020 Porto;Moradia com piscina;347886;06/06/2024;andreluiz21;andrebrito7;1
+17;Praça do Comércio, 123, 6000-050 Lisboa;Casa rústica com quintal;196820;06/06/2024;pedroalves20;anapereira77;1
+18;Rua Augusta, 45, 7000-100 Lisboa;Cobertura com vista mar;319365;06/06/2024;marcoslima12;andrebrito7;1
+19;Praça da Sé, 5, 2000-002 Porto;T1 com cozinha equipada;196119;06/06/2024;lauravieira02;pedrogomes33;1
+20;Rua Augusta, 45, 7000-100 Lisboa;T2 com vista para o rio;428556;06/06/2024;lauravieira02;anapereira77;1
+21;Rua do Almada, 50, 4000-200 Braga;T1 perto do Estádio;451692;06/06/2024;ricardosantos08;pedrogomes33;1
+22;Rua das Flores, 10, 3000-001 Coimbra;Estúdio próximo à universidade;355990;06/06/2024;marcoslima12;carolinamatos88;1
+23;Rua Augusta, 45, 7000-100 Lisboa;T3 com garagem;291836;06/06/2024;beatrizrocha05;anapereira77;1
+24;Avenida dos Aliados, 150, 5000-020 Porto;Casa rústica com quintal;356792;06/06/2024;ricardosantos08;Imobiliária;1
+25;Rua Augusta, 45, 7000-100 Lisboa;Casa rústica com quintal;116768;06/06/2024;pedroalves20;anapereira77;1
+26;Praça da Sé, 5, 2000-002 Porto;Cobertura com vista mar;120540;06/06/2024;carolinaferreira14;carolinamatos88;1
+27;Rua do Ouro, 15, 9000-070 Braga;Apartamento moderno no centro;180478;06/06/2024;ricardosantos08;anapereira77;1
+28;Largo do Carmo, 101, 4000-004 Braga;T1 perto do Estádio;227436;06/06/2024;lauravieira02;carolinamatos88;1
+29;Rua das Flores, 10, 3000-001 Coimbra;T3 com garagem;160075;06/06/2024;beatrizrocha05;anapereira77;1
+30;Rua das Flores, 10, 3000-001 Coimbra;T1 perto do Estádio;379343;06/06/2024;diogoribeiro13;Imobiliária;1
+31;Rua Augusta, 45, 7000-100 Lisboa;Moradia com piscina;199193;06/06/2024;marcoslima12;carolinamatos88;1
+32;Rua das Flores, 10, 3000-001 Coimbra;Apartamento moderno no centro;117644;06/06/2024;marcoslima12;carolinamatos88;1
+33;Largo do Carmo, 101, 4000-004 Braga;Moradia com piscina;246916;06/06/2024;sofiaoliveira09;anapereira77;1
+34;Rua das Flores, 10, 3000-001 Coimbra;Casa rústica com quintal;398971;06/06/2024;gabrielfreitas03;Imobiliária;1
+35;Rua do Ouro, 15, 9000-070 Braga;Moradia com piscina;321257;06/06/2024;diogoribeiro13;carolinamatos88;1
+36;Rua das Flores, 10, 3000-001 Coimbra;Casa rústica com quintal;482162;06/06/2024;pedroalves20;andrebrito7;1
+37;Praça da Sé, 5, 2000-002 Porto;T1 com cozinha equipada;431201;06/06/2024;ricardosantos08;joaoribeiro11;1
+38;Avenida da Liberdade, 200, 1000-003 Lisboa;T1 com cozinha equipada;276245;06/06/2024;diogoribeiro13;carolinamatos88;1
+39;Rua das Flores, 10, 3000-001 Coimbra;Apartamento moderno no centro;435681;06/06/2024;isabelapereira07;Imobiliária;1
+40;Largo do Carmo, 101, 4000-004 Braga;Loft espaçoso com varanda;425997;06/06/2024;gustavocosta10;andrebrito7;1
+41;Rua de Santa Catarina, 300, 8000-040 Porto;T2 com vista para o rio;179625;06/06/2024;pedroalves20;carolinamatos88;1
+42;Rua do Almada, 50, 4000-200 Braga;Moradia com piscina;104160;06/06/2024;sofiaoliveira09;anapereira77;1
+43;Avenida da Liberdade, 200, 1000-003 Lisboa;T3 com garagem;108382;06/06/2024;rodrigomartins18;Imobiliária;1
+44;Praça da Sé, 5, 2000-002 Porto;T1 com cozinha equipada;442060;06/06/2024;gabrielfreitas03;carolinamatos88;1
+45;Avenida da Liberdade, 200, 1000-003 Lisboa;Moradia com piscina;244878;06/06/2024;beatrizrocha05;pedrogomes33;1
+46;Praça do Comércio, 123, 6000-050 Lisboa;Moradia com piscina;447838;06/06/2024;beatrizrocha05;Imobiliária;1
+47;Largo do Carmo, 101, 4000-004 Braga;Loft espaçoso com varanda;284093;06/06/2024;gabrielfreitas03;andrebrito7;1
+48;Rua do Ouro, 15, 9000-070 Braga;Cobertura com vista mar;392831;06/06/2024;fernandogomes17;pedrogomes33;1
+49;Avenida dos Aliados, 150, 5000-020 Porto;T2 com vista para o rio;491967;06/06/2024;carolinaferreira14;pedrogomes33;1
+50;Avenida dos Aliados, 150, 5000-020 Porto;T1 perto do Estádio;472018;06/06/2024;ricardosantos08;anapereira77;1
