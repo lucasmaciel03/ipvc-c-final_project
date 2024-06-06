@@ -9,13 +9,13 @@
 #include "clients.h"
 #include "../role_agents/role_agents.h"
 
-#define FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/properties.txt"
+#define FILENAME "../data/properties.txt"
 
-#define FILENAME_VISITAS "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/visits.txt"
+#define FILENAME_VISITAS "../data/visits.txt"
 
-#define FILENAME_CLIENTS "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/clients.txt"
+#define FILENAME_CLIENTS "../data/clients.txt"
 
-#define USERS_FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/users.dat"
+#define USERS_FILENAME "../data/users.dat"
 
 void updatePropertyInFile(int propertyId, const char* newOwner, PropertyStatus newStatus) {
     FILE* file = fopen(FILENAME, "r");
@@ -423,39 +423,37 @@ void deleteAccount(const User* user) {
 }
 
 // Função para retornar todas as visitas associadas ao cliente logado
+// - Read de visits.txt (marcoslima12;06/06/2024;23:30;2;anapereira77;1;0) and verify if the name of the client is the same as the logged user
+// - Print the visits
 void myVisits(const User *user) {
-    FILE* file = fopen(FILENAME_VISITAS, "r");
-    if (file == NULL) {
-        printf("Erro: Não foi possível abrir o ficheiro de visitas\n");
-        return;
-    }
+    VisitList visitList;
+    initVisitList(&visitList);
+    loadVisitsFromFile(&visitList);
 
-    Visit visit;
+    Visit* currentVisit = visitList.head;
     int found = 0;
 
-    printf("============================================\n");
-    printf("Visitas agendadas:\n");
-    printf("============================================\n");
-
-    while (fread(&visit, sizeof(Visit), 1, file)) {
-        if (strcmp(visit.clientUsername, user->username) == 0) {
+    while (currentVisit != NULL) {
+        if (strcmp(currentVisit->clientUsername, user->username) == 0) {
             found = 1;
-            printf("ID da Propriedade: %d\n", visit.propertyId);
-            printf("Data da Visita: %s\n", visit.date);
-            printf("Hora da Visita: %s\n", visit.time);
-            printf("Agente: %s\n", visit.agentUsername);
-            printf("Estado da Visita: %s\n", visit.status == AGENDADA ? "Agendada" : "Realizada");
+            printf("============================================\n");
+            printf("Agente: %s\n", currentVisit->agentUsername);
+            printf("Data: %s\n", currentVisit->date);
+            printf("Hora: %s\n", currentVisit->time);
+            printf("ID da Propriedade: %d\n", currentVisit->propertyId);
+            printf("Status: %s\n", currentVisit->status == FINALIZADA ? "Finalizada" : currentVisit->status == AGENDADA ? "Agendada" : "Não Compareceu");
+            printf("Tipo: %s\n", currentVisit->tipo == POR_ANUNCIO ? "Anúncio" : "Casa Aberta");
             printf("============================================\n");
         }
+        currentVisit = currentVisit->next;
     }
 
-    fclose(file);
-
     if (!found) {
-        printf("Nenhuma visita agendada.\n");
+        printf("Nenhuma visita encontrada.\n");
     }
 
     int choice;
+    printf("============================================\n");
     printf("1. Voltar\n");
     printf("2. Sair\n");
     printf("============================================\n");
