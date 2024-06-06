@@ -1,5 +1,6 @@
 1;rua;casa;2000.00;05/06/2024;paulotiago06;ronaldo;0
-2;rua;ok;123.00;05/06/2024;paulotiago06;Imobiliária;1
+2;rua;ok;123.00;05/06/2024;paulotiago06;Imobiliária;0
 3;rua;casa;90.00;05/06/2024;paulotiago06;ronaldo;1
 4;rua;casa;2000.00;06/06/2024;paulotiago06;Imobiliária;3
 5;rua;casa;20.00;06/06/2024;paulotiago06;ronaldo;3
+6;rua;casa;20000.00;06/06/2024;rubendias04;ronaldo;2

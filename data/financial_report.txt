@@ -1,0 +1,7 @@
+Relatório gerado no dia 06/06/2024 sobre as propriedades ARRENDADAS
+============================================
+Data: 06/06/2024, Hora: 16:06
+Propriedade: rua, casa, 20000.00 €, Proprietário: ronaldo
+Agente: rubendias04
+============================================
+Total de receitas: 1666.67 €

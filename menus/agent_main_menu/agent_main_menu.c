@@ -20,9 +20,10 @@ void display_agent_main_menu(const User *user){
     printf("6. Listar todas as visitas a uma determinada propriedade\n");
     printf("7. Listar todas as visitas onde cliente não compareceu\n");
     printf("8. Faturamento hoje e este mês\n");
-    printf("9. Atualizar Visitas\n");
-    printf("10. Total de visitas por agente\n");
-    printf("11. Sair\n");
+    printf("9. Gerar relatório com o total de receitas\n");
+    printf("10. Atualizar Visitas\n");
+    printf("11. Total de visitas por agente\n");
+    printf("12. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
@@ -53,12 +54,15 @@ void display_agent_main_menu(const User *user){
             calculateRevenue(&visitList, user);
             break;
         case 9:
-            simulateVisit(&visitList, user);
+            generateFinancialReport(&visitList, user);
             break;
         case 10:
-            totalVisitsByAgent(&visitList, user);
+            simulateVisit(&visitList, user);
             break;
         case 11:
+            totalVisitsByAgent(&visitList, user);
+            break;
+        case 12:
             exit_system();
             break;
         default:

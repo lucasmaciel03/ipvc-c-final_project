@@ -1,0 +1,3 @@
+paulotiago06;16/06/2024;18:00;2;ronaldo;1;0
+paulotiago06;06/06/2024;12:00;2;ronaldo;0;0
+rubendias04;06/06/2024;16:06;6;ronaldo;0;0

@@ -1,29 +1,20 @@
 Relatório de Agentes
 ============================================
 Username: paulotiago06
-Nome: paulo
-NIF: 12
-Morada: ok
+Nome: Paulo Tiago
+NIF: 123
+Morada: Rua
 Contacto: 91
-Data de Nascimento: 20/01/2000
-Idade: 24
+Data de Nascimento: 19/07/1987
+Idade: 36
 Estado: Disponível
 ============================================
-Username: antoniosilva
-Nome: António Silva
-NIF: 90
+Username: rubendias04
+Nome: Ruben Dias
+NIF: 909
 Morada: Rua da Igreja
-Contacto: 910
-Data de Nascimento: 02/05/2000
-Idade: 24
+Contacto: 9124
+Data de Nascimento: 17/05/1987
+Idade: 37
 Estado: Disponível
-============================================
-Username: yannicdjalo
-Nome: Yannic
-NIF: 12
-Morada: ok
-Contacto: 12
-Data de Nascimento: 20/05/2006
-Idade: 18
-Estado: Indisponível
 ============================================

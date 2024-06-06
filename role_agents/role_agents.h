@@ -4,9 +4,9 @@
 #include "../auth/users/user.h"
 
 typedef enum {
-    FINALIZADA,
-    AGENDADA,
-    NAO_COMPARECEU
+    FINALIZADA, // 0
+    AGENDADA, // 1
+    NAO_COMPARECEU // 2
 } VisitStatus;
 
 typedef enum {
@@ -15,6 +15,7 @@ typedef enum {
 } VisitType;
 
 typedef struct Visit {
+    char agentUsername[20];
     char date[11];
     char time[6];
     int propertyId;
@@ -45,4 +46,5 @@ void simulateVisit(VisitList* visitList, const User* user);
 void listNoShowVisits(VisitList* visitList, const User* user);
 void calculateRevenue(VisitList* visitList, const User* user);
 void totalVisitsByAgent(VisitList* visitList, const User* user);
+void generateFinancialReport(VisitList* visitList, const User* user);
 #endif

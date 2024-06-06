@@ -72,8 +72,8 @@ Desenvolvimento de uma aplicação para a gestão de visitas de uma imobiliária
 
 - [X] Implementar a funcionalidade para listar as visitas em que o cliente não compareceu em um determinado dia.
 - [X] Implementar a funcionalidade para saber quanto foi faturado hoje e este mês por cada tipo de propriedade.
-- [ ] Implementar a funcionalidade para saber quantas visitas cada agente realizou este mês.
-- [ ] Implementar a funcionalidade para gerar relatórios financeiros diários e mensais por tipo de propriedade.
+- [X] Implementar a funcionalidade para saber quantas visitas cada agente realizou este mês.
+- [X] Implementar a funcionalidade para gerar relatórios financeiros diários e mensais por tipo de propriedade.
 
 ### Gestão de Filas de Espera
 
