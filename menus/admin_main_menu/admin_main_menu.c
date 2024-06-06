@@ -13,9 +13,8 @@ void display_admin_main_menu(const User *user){
     printf("============================================\n");
     printf("1. Gestão de Propriedades\n");
     printf("2. Cestão de Agentes\n");
-    printf("3. Gestão de Administradores\n");
-    printf("4. Gestão Base de Dados\n");
-    printf("5. Sair\n");
+    printf("3. Gestão Base de Dados\n");
+    printf("4. Sair\n");
     printf("============================================\n");
     printf("Escolha uma opção: ");
     scanf("%d", &choice);
@@ -28,12 +27,9 @@ void display_admin_main_menu(const User *user){
             display_agent_menu(user);
             break;
         case 3:
-            // admin_menu();
-            break;
-        case 4:
             display_database_menu(user);
             break;
-        case 5:
+        case 4:
             exit_system();
             break;
         default:
