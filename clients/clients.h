@@ -19,4 +19,5 @@ Property* announceProperty(const User *user);
 void myProperties(const User *user);
 void updateClientProfile(const User* user);
 void deleteAccount(const User* user);
+void myVisits(const User *user);
 #endif

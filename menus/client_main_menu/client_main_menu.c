@@ -34,7 +34,7 @@ void display_client_main_menu(const User *user){
             myProperties(user);
             break;
         case 4:
-            // visit_simulation();
+            myVisits(user);
             break;
         case 5:
             updateClientProfile(user);

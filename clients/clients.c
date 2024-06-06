@@ -7,10 +7,11 @@
 #include "../auth/users/user.h"
 #include "../menus/client_main_menu/client_main_menu.h"
 #include "clients.h"
+#include "../role_agents/role_agents.h"
 
 #define FILENAME "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/properties.txt"
 
-#define FILENAME_VISITAS "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/visitas.txt"
+#define FILENAME_VISITAS "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/visits.txt"
 
 #define FILENAME_CLIENTS "/Users/lucas.maciel/Documents/ipvc-git/ipvc-c-final_project/data/clients.txt"
 
@@ -419,6 +420,56 @@ void deleteAccount(const User* user) {
     rename("temp_properties.txt", FILENAME);
 
     printf("Todas as propriedades associadas foram eliminadas.\n");
+}
+
+// Função para retornar todas as visitas associadas ao cliente logado
+void myVisits(const User *user) {
+    FILE* file = fopen(FILENAME_VISITAS, "r");
+    if (file == NULL) {
+        printf("Erro: Não foi possível abrir o ficheiro de visitas\n");
+        return;
+    }
+
+    Visit visit;
+    int found = 0;
+
+    printf("============================================\n");
+    printf("Visitas agendadas:\n");
+    printf("============================================\n");
+
+    while (fread(&visit, sizeof(Visit), 1, file)) {
+        if (strcmp(visit.clientUsername, user->username) == 0) {
+            found = 1;
+            printf("ID da Propriedade: %d\n", visit.propertyId);
+            printf("Data da Visita: %s\n", visit.date);
+            printf("Hora da Visita: %s\n", visit.time);
+            printf("Agente: %s\n", visit.agentUsername);
+            printf("Estado da Visita: %s\n", visit.status == AGENDADA ? "Agendada" : "Realizada");
+            printf("============================================\n");
+        }
+    }
+
+    fclose(file);
+
+    if (!found) {
+        printf("Nenhuma visita agendada.\n");
+    }
+
+    int choice;
+    printf("1. Voltar\n");
+    printf("2. Sair\n");
+    printf("============================================\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &choice);
+    clearBuffer();
+
+    if (choice == 1) {
+        display_client_main_menu(user);
+    } else if (choice == 2) {
+        exit_system();
+    } else {
+        printf("Opção inválida.\n");
+    }
 }
 
 
